@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+ 
+  <title>Mstian</title>
+  <style>
+    .appbg {
+      z-index: -11;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .bgimg{
+      width: 100vw;
+      height: 100vh;
+      background-image: url('https://img.zcool.cn/community/01eff05d53b2a4a80120695c89a925.png@2o.png');
+      background-color: cornsilk;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      filter:blur(5px);
+      transform: scale(1.03)
+    }
+  </style>
+</head>
+<body>
+ 
+  <div class="appbg">
+    <div class="bgimg">
+    
+    </div>
+  </div>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+<script>
+      let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
+      if(flag){
+        alert('pc端浏览效果最佳')
+      }else{
+        // alert(1);
+      }
+</script>
+</html>
