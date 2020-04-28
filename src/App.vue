@@ -4,7 +4,7 @@
       <appnav />
       <div class="router-view">
         <transition name="fade-page" mode="out-in">
-          <keep-alive>
+          <keep-alive :exclude="['Home','ViewArticle']">
             <router-view />
           </keep-alive>
         </transition>

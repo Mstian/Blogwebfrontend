@@ -21,6 +21,7 @@ import {getArticleById} from '../api/request/article';
 import {formmatTime} from '../utils/index';
 import 'mavon-editor/dist/css/index.css'
 export default {
+    name:"ViewArticle",
     data:()=>{
         return{
             articleInfo:{},
