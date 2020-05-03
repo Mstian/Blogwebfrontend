@@ -103,7 +103,7 @@ export default {
 }
 .navwrap {
   min-width: 1024px; /*no*/
-  width: 60vw;
+  width: 65vw;
   margin: 0 auto;
   padding: 0 20px;
   position: relative;

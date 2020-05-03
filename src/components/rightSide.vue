@@ -1,5 +1,6 @@
 <template>
   <div class="sidewrap">
+    <music/>
     <div class="rightside">
       <div class="search">
         <el-input class="searchinput" v-model="search" placeholder="请输入要搜索的文章标题关键字">
@@ -36,6 +37,8 @@
 
 <script>
 import { checkLogin } from "../utils/index";
+import music from './music';
+
 export default {
   components: {},
   data() {
@@ -101,7 +104,10 @@ export default {
     }
   },
   created() {},
-  mounted() {}
+  mounted() {},
+  components:{
+    music
+  }
 };
 </script>
 <style lang='scss' >

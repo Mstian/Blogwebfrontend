@@ -184,6 +184,7 @@ export default {
   cursor: pointer;
 }
 .articleList .bot {
+  font-size: 18px;
   display: flex;
   justify-content: flex-start;
   div {

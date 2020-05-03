@@ -17,12 +17,38 @@
 import appnav from "./components/nav";
 import rightside from "./components/rightSide";
 import routeArr from "../src/router/routeArr";
+
 export default {
+  
   components: {
     appnav,
-    rightside
+    rightside,
+   
   },
-  created() {}
+  created() {},
+  mounted() {
+    const script = document.createElement("script");
+    script.src =
+      "https://s4.cnzz.com/z_stat.php%3Fid%3D1278868797%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E";
+    script.language = "JavaScript";
+    document.body.appendChild(script);
+  },
+  watch: {
+    $route: {
+      handler(to, from) {
+        setTimeout(() => {
+          if (window._czc) {
+            let location = window.location;
+            let contentUrl = location.pathname + location.hash;
+            let refererUrl = "/";
+            window._czc.push(["_trackPageview", contentUrl, refererUrl]);
+            window._czc.push(["_setAutoPageview"], false);
+          }
+        }, 300);
+      },
+      immediate: true
+    }
+  }
 };
 </script>>
 
@@ -62,7 +88,7 @@ export default {
 //   position: absolute;
 // }
 .router-view {
-  width: 60vw;
+  width:65vw;
   margin: 0 auto;
   // background: #fff;
   margin-top: 10px;
