@@ -4,6 +4,7 @@ import Qs from 'qs';
 const $axios = axios.create({
     timeout: 30000,
     baseURL: 'http://www.tianleilei.cn'
+    // baseURL:'http://192.168.1.108:3000'
 })
 let loading = null
 $axios.interceptors.request.use((config) => {

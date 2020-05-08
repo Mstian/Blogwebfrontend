@@ -61,11 +61,8 @@
     </div>
     <div class="right">
       <div>友情链接</div>
-      <p>
-        <a href="https://www.wanandroid.com/" target="_blank">安卓 玩安卓</a>
-      </p>
-      <p>
-        <a href="http://www.inode.club/" target="_blank">前端 node 程序员成长指北</a>
+      <p v-for="(item) in friendChain" :key="item._id" >
+        <a :href="item.link" target="_blank">{{item.name}}</a>
       </p>
     </div>
   </div>
@@ -74,11 +71,13 @@
 <script>
 import { addComment, getCommnet, deleteComment } from "../api/request/comment";
 import { formmatTime ,checkLogin} from "../utils/index";
+import {getFriendChain} from '../api/request/friend';
 export default {
   data() {
     return {
       textarea: "",
-      commentList: []
+      commentList: [],
+      friendChain:[],
     };
   },
   methods: {
@@ -166,10 +165,18 @@ export default {
           this.commentList = [];
         }
       });
+    },
+    async getFriendChain(){
+      let data = await getFriendChain();
+      if(data.err==0){
+        this.friendChain = data.data;
+      }
+     
     }
   },
   mounted() {
     this.getCommnets();
+    this.getFriendChain();
   }
 };
 </script>

@@ -9,8 +9,8 @@
     <div class="home_left">
       <div class="banner">
         <el-carousel height="300px" :interval="4000" arrow="always">
-          <el-carousel-item v-for="(item,index) in bannerArr" :key="index">
-            <div class="bannerItem" :style="{backgroundImage:'url('+item+')'}"></div>
+          <el-carousel-item v-for="(item,index) in bannerArr" :key="item._id">
+            <div class="bannerItem" :style="{backgroundImage:'url('+item.url+')'}" @click="toBannerLink(item.link)"></div>
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -57,7 +57,7 @@
 import rightside from "../components/rightSide";
 import { formmatTime } from "../utils/index";
 import { getHomeArticle } from "../api/request/article";
-
+import {getBanner} from '../api/request/banner';
 export default {
   name: "Home",
   components: {
@@ -73,10 +73,7 @@ export default {
       pageSize: 10,
       curpage:0,
       allpage:0,
-      bannerArr: [
-        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587491955776&di=9cd4d915042ad0771280dbc977d95f6f&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F7LsWdDW5_xN3otqbppnN2DJv%2Fzhidao%2Fpic%2Fitem%2F838ba61ea8d3fd1f60ff10e63b4e251f94ca5f73.jpg",
-        "http://imgsrc.baidu.com/forum/pic/item/35a9d5a20cf431ad364aab104636acaf2edd981a.jpg"
-      ]
+      bannerArr: []
     };
   },
   methods: {
@@ -120,13 +117,22 @@ export default {
       // console.log(item.link)
         window.open(item.link)
       }
+    },
+    async getBanner(){
+      let data = await getBanner();
+      console.log(data)
+      if(data.err == 0){
+        this.bannerArr = data.data;
+      }
+    },
+    toBannerLink(link){
+      window.open(link);
     }
   },
   computed: {},
   mounted() {
     this.getarticle(this.pageIndex,this.pageSize);
-    // console.log(this.$store.state.uid);
-    // console.log(this.$store.state.userName);
+    this.getBanner();
   }
 };
 </script>

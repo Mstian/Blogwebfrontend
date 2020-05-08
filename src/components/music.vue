@@ -65,4 +65,7 @@ data: () => {
     top:-10px;
     width: 100%;
 }
+.aplayer-info .aplayer-controller .aplayer-time{
+  padding:0
+}
 </style>
